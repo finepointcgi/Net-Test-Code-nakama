@@ -49,7 +49,7 @@ func _process(delta):
 remotesync func shoot(shootpos, playerwhoshot):
 	var b : Area2D = Bullet.instance()
 	print("shooting")
-	get_tree().get_root().get_node("gameWorld").add_child(b)
+	get_tree().get_nodes_in_group("Gameworld")[0].add_child(b)
 	b.transform = shootpos
 	b.playerWhoShot = playerwhoshot
 	

@@ -16,7 +16,7 @@ func connect_to_nakama() -> void:
  
 	# Login to Nakama using "device authentication".
 	var device_id = OS.get_unique_id()
-	nakama_session = yield(nakama_client.authenticate_device_async(device_id, "Example"), 'completed')
+	nakama_session = yield(nakama_client.authenticate_device_async(device_id), 'completed')
 	if nakama_session.is_exception():
 		print ("Unable to connect to Nakama")
 		get_tree().quit()
@@ -93,6 +93,8 @@ remotesync func start_game() -> void:
 	get_tree().change_scene("res://gameWorld.tscn")
 	
 	
+func _on_OnlineMatch_matchmaker_matched():
+	print("Matched")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
